@@ -1,0 +1,56 @@
+<Head>
+</Head>
+
+<style>
+    h1{
+        background-color: aqua;
+        font-size: 50px;
+    }
+
+    div{
+        text-align: center;
+        font-size: 50px;
+    
+    }
+
+    body{
+        text-align: center;
+    }
+
+    Button{
+        height: 40px;
+        width: 70px;
+    }
+</style>
+
+<Body >
+    <center><h1 > Random Fakta kucing </h1></center>
+    <div id="fakta"></div><br>
+    <div id="panjang"></div><br>
+    <button onClick="window.location.reload();">Fakta baru</button>
+    
+    
+    <script>
+        fetch('https://catfact.ninja/fact')
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                tampilin(data);
+
+            })
+            .catch(error => console.log(error));
+        
+        
+        
+        function tampilin(data) {
+            var faktarandom = document.getElementById("fakta");
+            faktarandom.innerHTML = 'Fakta random kucing : '+ data.fact;
+            var pkata = document.getElementById("panjang");
+            pkata.innerHTML = 'panjang kata : '+ data.length;
+
+        }
+        
+    </script>
+</Body>
